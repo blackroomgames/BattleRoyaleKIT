@@ -1,0 +1,684 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlackGUI</name>
+    </assembly>
+    <members>
+        <member name="T:BlackGUI.AdapterComponents.ExterminableComponent">
+            <summary>
+            Класс компонента для работы View-адаптеров, реализует OnDestroyEvent
+            </summary>
+        </member>
+        <member name="T:BlackGUI.AdapterComponents.HiddenComponent">
+            <summary>
+            Класс компонента для работы View-адаптеров, реализует OnHideEvent
+            </summary>
+        </member>
+        <member name="T:BlackGUI.AdapterComponents.SelectableComponent">
+            <summary>
+            Класс компонента для работы View-адаптеров, реализует OnSelectEvent
+            </summary>
+        </member>
+        <member name="T:BlackGUI.AdapterComponents.ShowableComponent">
+            <summary>
+            Класс компонента для работы View-адаптеров, реализует OnShowEvent
+            </summary>
+        </member>
+        <member name="T:BlackGUI.BlackGUIConnector">
+            <summary>
+            Основной класс для взаимодействия с средой BlackGUI с реализацией принципов MVC
+            </summary>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.SetFactory(BlackGUI.MVC.Factory.IFactory)">
+            <summary>
+            Установить внешнюю фабрику объектов среды BlackGUI <seealso cref="T:BlackGUI.MVC.Factory.IFactoryProduct"/>
+            </summary>
+            <param name="factory">Реализация внешней фабрики <seealso cref="T:BlackGUI.MVC.Factory.IFactory"/></param>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.UpdateAllControllers">
+            <summary>
+            Обновить все контроллеры
+            </summary>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.UpdateControllersWithTag(System.String)">
+            <summary>
+            Обновить контроллеры с указанным тегом
+            </summary>
+            <param name="tag"></param>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WithSetup``1(``0,System.Action{``0})">
+            <summary>
+            Установить метод настройки для объекта View
+            </summary>
+            <typeparam name="T">Тип объекта View</typeparam>
+            <param name="viewObject">Реализация объекта View</param>
+            <param name="onSetupMethod">Метод настроки объекта View</param>
+            <returns>Реализация объекта View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.AddController``1(BlackGUI.MVC.View.IView)">
+            <summary>
+            Установить для объекта View рабочий контроллер
+            </summary>
+            <remarks>Данный метод является завершающим и включает в работу настраиваемый объект View</remarks>
+            <typeparam name="T">Тип объекта View</typeparam>
+            <param name="viewObject">Реализация объекта View</param>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.Initialize(UnityEngine.Canvas,BlackGUI.UI.UIElementsResources)">
+            <summary>
+            Инициализировать BlackGUI для работы с <seealso cref="T:BlackGUI.UI.BaseUIElement"/>
+            </summary>
+            <param name="targetCanvas">Рабочий Canvas</param>
+            <param name="elementsResources">Настройка с префабами UIElements</param>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.OpenScreen``1">
+            <summary>
+            Открыть экран, реализующий <seealso cref="T:BlackGUI.UI.BaseUIElement"/> 
+            </summary>
+            <remarks>Для настройки работы элемента рекомендуется использовать принцип MVC, так как все элементы реализуют основной интерфейс View <seealso cref="T:BlackGUI.MVC.View.IView"/></remarks>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.OpenPopup``1">
+            <summary>
+            Открыть попап, реализующий <seealso cref="T:BlackGUI.UI.BaseUIElement"/>
+            </summary>
+            <remarks>Для настройки элемента рекомендуется использовать принцип MVC, так как все элементы реализуют основной интерфейс View <seealso cref="T:BlackGUI.MVC.View.IView"/></remarks>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.Close``1">
+            <summary>
+            Закрыть указанный элемент
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.CloseLastScreen">
+            <summary>
+            Закрыть последний последний открытый экран
+            </summary>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.CloseLastPopup">
+            <summary>
+            Закрыть последний последний открытый попап
+            </summary>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.CloseAll">
+            <summary>
+            Закрыть все элементы
+            </summary>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(UnityEngine.UI.Button)">
+            <summary>
+            Преобразовать компонент Button в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.ButtonView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IButtonView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(UnityEngine.UI.Button)">
+            <summary>
+            Преобразовать компонент Button в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.ButtonView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IButtonView`2"/></remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereOnClickCreateEventArg``1(BlackGUI.MVC.View.IButtonView{UnityEngine.UI.Button,``0},System.Func{UnityEngine.UI.Button,``0})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnClick, если используется Button
+            </summary>
+            <typeparam name="T">Тип аргумента</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereOnClickCreateEventArg``2(BlackGUI.MVC.View.IButtonView{``0,``1},System.Func{``0,``1})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnClick, если использутся Custom инициатор <seealso cref="T:BlackGUI.MVC.View.IButtonView`2"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereOnShowCreateEventArg``2(BlackGUI.MVC.View.IShowableView{``0,``1},System.Func{``0,``1})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnShow
+            </summary>
+            <typeparam name="V"></typeparam>
+            <typeparam name="T"></typeparam>
+            <param name="showableView"></param>
+            <param name="onShowCreateEventArg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereOnHiddenCreateEventArg``2(BlackGUI.MVC.View.IHiddenView{``0,``1},System.Func{``0,``1})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnHide
+            </summary>
+            <typeparam name="V"></typeparam>
+            <typeparam name="T"></typeparam>
+            <param name="hiddenView"></param>
+            <param name="onHiddenCreateEventArg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereOnSelectedCreateEvent``2(BlackGUI.MVC.View.ISelectableView{``0,``1},System.Func{``0,``1})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnSelect
+            </summary>
+            <typeparam name="V"></typeparam>
+            <typeparam name="T"></typeparam>
+            <param name="selectableView"></param>
+            <param name="onSelectedCreateEventArg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(UnityEngine.UI.Dropdown)">
+            <summary>
+            Преобразовать компонент Dropdown в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.DropdownView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IDropdownView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(UnityEngine.UI.Dropdown)">
+            <summary>
+            Преобразовать компонент Dropdown в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.DropdownView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IDropdownView`2"/></remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию Viewи</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereDropdownCreateEventArg``1(BlackGUI.MVC.View.IDropdownView{UnityEngine.UI.Dropdown,``0},System.Func{UnityEngine.UI.Dropdown,``0})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnValueChanged, если используется Dropdown
+            </summary>
+            <typeparam name="T">Тип аргумента</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereDropdownCreateEventArg``2(BlackGUI.MVC.View.IDropdownView{``0,``1},System.Func{``0,``1})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnValueChanged, если использутся Custom инициатор <seealso cref="T:BlackGUI.MVC.View.IDropdownView`2"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(UnityEngine.UI.Image)">
+            <summary>
+            Преобразовать компонент Image в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.ImageView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IImageView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(UnityEngine.UI.Image)">
+            <summary>
+            Преобразовать компонент Image в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.ImageView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует OnShow, как основное рабочее событие</remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(UnityEngine.UI.InputField)">
+            <summary>
+            Преобразовать компонент InputField в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.InputFieldView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IInputFieldView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(UnityEngine.UI.InputField)">
+            <summary>
+            Преобразовать компонент InputField в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.InputFieldView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IInputFieldView`2"/></remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereEndEditCreateEventArg``1(BlackGUI.MVC.View.IInputFieldView{UnityEngine.UI.InputField,``0},System.Func{UnityEngine.UI.InputField,``0})">
+            <summary>
+            Задать метод создания рабочего аргумента для событий OnEndEdit, если используется InputField
+            </summary>
+            <typeparam name="T">Тип аргумента</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereEndEditCreateEventArg``2(BlackGUI.MVC.View.IInputFieldView{``0,``1},System.Func{``0,``1})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnEndEdit, если использутся Custom инициатор <seealso cref="T:BlackGUI.MVC.View.IInputFieldView`2"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(UnityEngine.UI.Slider)">
+            <summary>
+            Преобразовать компонент Slider в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.SliderView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.ISliderView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(UnityEngine.UI.Slider)">
+            <summary>
+            Преобразовать компонент Slider в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.SliderView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.ISliderView`2"/></remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereChangeValueCreateEventArg``1(BlackGUI.MVC.View.ISliderView{UnityEngine.UI.Slider,``0},System.Func{UnityEngine.UI.Slider,``0})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnValueChanged, если используется Slider
+            </summary>
+            <typeparam name="T">Тип аргумента</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereChangeValueCreateEventArg``2(BlackGUI.MVC.View.ISliderView{``0,``1},System.Func{``0,``1})">
+            <summary>
+            Задать метод создания рабочего аргумента для события onValueChanged, если использутся Custom инициатор <seealso cref="T:BlackGUI.MVC.View.ISliderView`2"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(UnityEngine.UI.Text)">
+            <summary>
+            Преобразовать компонент Text в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.TextView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.ITextView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(UnityEngine.UI.Text)">
+            <summary>
+            Преобразовать компонент Text в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.TextView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует OnShow, как основное рабочее событие</remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(UnityEngine.UI.Toggle)">
+            <summary>
+            Преобразовать компонент Toggle в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.ToggleView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IToggleView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(UnityEngine.UI.Toggle)">
+            <summary>
+            Преобразовать компонент Toggle в стандартную реализацию View-адаптер <seealso cref="T:BlackGUI.MVC.View.ToggleView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IToggleView`2"/></remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereChangeToggleValueCreateEventArg``1(BlackGUI.MVC.View.IToggleView{UnityEngine.UI.Toggle,``0},System.Func{UnityEngine.UI.Toggle,``0})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnValueChanged, если используется Toggle
+            </summary>
+            <typeparam name="T">Тип аргумента</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereChangeToggleValueCreateEventArg``2(BlackGUI.MVC.View.IToggleView{``0,``1},System.Func{``0,``1})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnValueChanged, если использутся Custom инициатор <seealso cref="T:BlackGUI.MVC.View.IToggleView`2"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(TMPro.TMP_Dropdown)">
+            <summary>
+            Преобразовать компонент TMP_Dropdown в стандартную реализацию View <seealso cref="T:BlackGUI.MVC.View.TMProDropdownView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IDropdownView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(TMPro.TMP_Dropdown)">
+            <summary>
+            Преобразовать компонент TMP_Dropdown в стандартную реализацию View <seealso cref="T:BlackGUI.MVC.View.TMProDropdownView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IDropdownView`2"/></remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereDropdownCreateEventArg``1(BlackGUI.MVC.View.IDropdownView{TMPro.TMP_Dropdown,``0},System.Func{TMPro.TMP_Dropdown,``0})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnValueChanged, если используется TMP_Dropdown
+            </summary>
+            <typeparam name="T">Тип аргумента</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(TMPro.TMP_InputField)">
+            <summary>
+            Преобразовать компонент TMP_InputField в стандартную реализацию View <seealso cref="T:BlackGUI.MVC.View.TMProInputFieldView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IInputFieldView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(TMPro.TMP_InputField)">
+            <summary>
+            Преобразовать компонент TMP_InputField в стандартную реализацию View <seealso cref="T:BlackGUI.MVC.View.TMProInputFieldView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.IInputFieldView`2"/></remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.WhereEndEditCreateEventArg``1(BlackGUI.MVC.View.IInputFieldView{TMPro.TMP_InputField,``0},System.Func{TMPro.TMP_InputField,``0})">
+            <summary>
+            Задать метод создания рабочего аргумента для события OnEndEdit, если используется TMP_InputField
+            </summary>
+            <typeparam name="T">Тип аргумента</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView(TMPro.TextMeshProUGUI)">
+            <summary>
+            Преобразовать компонент TextMeshProUGUI в стандартную реализацию View <seealso cref="T:BlackGUI.MVC.View.TMProTextView"/>
+            </summary>
+            <remarks>Объект View реализует интерфейс <seealso cref="T:BlackGUI.MVC.View.ITextView"/></remarks>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="M:BlackGUI.BlackGUIConnector.ForView``1(TMPro.TextMeshProUGUI)">
+            <summary>
+            Преобразовать компонент TextMeshProUGUI в стандартную реализацию View <seealso cref="T:BlackGUI.MVC.View.TMProTextView`1"/> с указанным рабочим аргументом
+            </summary>
+            <remarks>Объект View реализует OnShow, как основное рабочее событие</remarks>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+            <returns>Стандартную реализацию View</returns>
+        </member>
+        <member name="T:BlackGUI.UI.BaseUIElement">
+            <summary>
+            Класс для реализации объектов UI и дальнейшей работе с ними через принцип MVC, через интерфейс <seealso cref="T:BlackGUI.MVC.View.IView"/>
+            </summary>
+        </member>
+        <member name="M:BlackGUI.UI.BaseUIElement.Start">
+            <summary>
+            Вызываем событие OnShow
+            </summary>
+        </member>
+        <member name="M:BlackGUI.UI.BaseUIElement.OnEnable">
+            <summary>
+            Вызываем событие OnShow
+            </summary>
+        </member>
+        <member name="M:BlackGUI.UI.BaseUIElement.OnDisable">
+            <summary>
+            Вызываем событие OnHide
+            </summary>
+        </member>
+        <member name="M:BlackGUI.UI.BaseUIElement.OnDestroy">
+            <summary>
+            Вызываем событие OnDestroyView
+            </summary>
+        </member>
+        <member name="M:BlackGUI.UI.BaseUIElement.DestroyElement">
+            <summary>
+            Обработка момента уничтожения элемента
+            </summary>
+        </member>
+        <member name="M:BlackGUI.UI.BaseUIElement.StartElement">
+            <summary>
+            Обработка момент старта элемента
+            </summary>
+        </member>
+        <member name="T:BlackGUI.UI.BlackGUIService">
+            <summary>
+            Сервис для работы части связанной с <seealso cref="T:BlackGUI.UI.BaseUIElement"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.UI.UIElementsResources">
+            <summary>
+            Класс для настройки префабов <seealso cref="T:BlackGUI.UI.BaseUIElement"/>
+            </summary>
+        </member>
+        <member name="M:BlackGUI.UI.UIElementsResources.Get``1">
+            <summary>
+            Получить префаб элемента
+            </summary>
+            <typeparam name="T">Тип элемента</typeparam>
+            <returns>Реализация элемента <seealso cref="T:BlackGUI.UI.BaseUIElement"/></returns>
+        </member>
+        <member name="T:BlackGUI.ExecutableEventArg">
+            <summary>
+            Класс реализации аргумента рабочего эвента объекта View
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.Controller.BaseController`2">
+            <summary>
+            Базовый класс контроллера для работы в среде
+            </summary>
+            <typeparam name="V">Тип рабочего View</typeparam>
+            <typeparam name="M">Тип модели с данными</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.Controller.BaseUpdatableController`2">
+            <summary>
+            Базовый класс контроллера для работы в среде, обновляемый через <seealso cref="M:BlackGUI.BlackGUIConnector.UpdateAllControllers"/> и <seealso cref="M:BlackGUI.BlackGUIConnector.UpdateControllersWithTag(System.String)"/>
+            </summary>
+            <typeparam name="V">Тип рабочего View</typeparam>
+            <typeparam name="M">Тип модели с данными</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.Controller.IController">
+            <summary>
+            Основной интерфейс для реализации Контроллера из принципов MVC
+            </summary>
+        </member>
+        <member name="M:BlackGUI.MVC.Controller.IController.Init">
+            <summary>
+            Инициализировать контроллер
+            </summary>
+        </member>
+        <member name="M:BlackGUI.MVC.Controller.IController.AddView``1(``0)">
+            <summary>
+            Добавить View для работы
+            </summary>
+        </member>
+        <member name="M:BlackGUI.MVC.Controller.IController.RemoveView``1(``0)">
+            <summary>
+            Удалить View из работы
+            </summary>
+        </member>
+        <member name="M:BlackGUI.MVC.Controller.IController.UpdateViewes">
+            <summary>
+            Обновить все рабочие View
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.Controller.IUpdatableController">
+            <summary>
+            Основной интерфейс для реализации обновляемого Контроллера
+            </summary>
+        </member>
+        <member name="P:BlackGUI.MVC.Controller.IUpdatableController.Tag">
+            <summary>
+            Тег обновления <seealso cref="M:BlackGUI.BlackGUIConnector.UpdateControllersWithTag(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:BlackGUI.MVC.Controller.IUpdatableController.UpdateControllerHandling">
+            <summary>
+            Метод реализации обновления внутреннго состояния контроллера 
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.Factory.DefaultFactory">
+            <summary>
+            Стандартная реализации фабрики для работы в среде BlackGUI
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.Factory.IFactory">
+            <summary>
+            Основной интерфейс фабрики для работы в среде BlackGUI 
+            </summary>
+            <remarks><seealso cref="T:BlackGUI.MVC.Factory.IFactoryProduct"/></remarks>
+        </member>
+        <member name="M:BlackGUI.MVC.Factory.IFactory.Create``2">
+            <summary>
+            Создать продукт-объект
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="V"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:BlackGUI.MVC.Factory.IFactoryProduct">
+            <summary>
+            Основной интерфейс для продуктов фабрики <seealso cref="T:BlackGUI.MVC.Factory.IFactory"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.Model.EmptyModel">
+            <summary>
+            Реализация модели "пустышки"
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.Model.IModel">
+            <summary>
+            Основной интерфейс модели из принципа MVC
+            </summary>
+        </member>
+        <member name="M:BlackGUI.MVC.Model.IModel.Request">
+            <summary>
+            Запросить данные "бизнес-логики"
+            </summary>
+        </member>
+        <member name="M:BlackGUI.MVC.Model.IModel.Update">
+            <summary>
+            Обновить данные "бизнес-логики"
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.BaseUnityUIViewAdapter">
+            <summary>
+            View адаптер по работе с элементами MonoBehaviour, реализует стандартные события OnShow и OnDestroyEvent
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.BaseUnityUIViewAdapter`2">
+            <summary>
+            View адаптер по работе с элементами MonoBehaviour, реализует стандартные события OnShow и OnDestroyEvent, с рабочими аргументами
+            </summary>
+            <typeparam name="T">Целевой тип объекта при работе с событием</typeparam>
+            <typeparam name="Arg">Тип аргумента создаваемого для работы события</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.ButtonView">
+            <summary>
+            View адаптер по работе с элементом Button, реализует <seealso cref="T:BlackGUI.MVC.View.IButtonView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.ButtonView`1">
+            <summary>
+            View адаптер по работе с элементом Button, реализует <seealso cref="T:BlackGUI.MVC.View.IButtonView`2"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.DropdownView">
+            <summary>
+            View адаптер по работе с элементом Dropdown, реализует <seealso cref="T:BlackGUI.MVC.View.IDropdownView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.DropdownView`1">
+            <summary>
+            View адаптер по работе с элементом Dropdown, реализует <seealso cref="T:BlackGUI.MVC.View.IDropdownView`2"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.ImageView">
+            <summary>
+            View адаптер по работе с элементом Image, реализует <seealso cref="T:BlackGUI.MVC.View.IImageView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.ImageView`1">
+            <summary>
+            View адаптер по работе с элементом Image, реализует <seealso cref="T:BlackGUI.MVC.View.IImageView"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.InputFieldView">
+            <summary>
+            View адаптер по работе с элементом InputField, реализует <seealso cref="T:BlackGUI.MVC.View.IInputFieldView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.InputFieldView`1">
+            <summary>
+            View адаптер по работе с элементом InputField, реализует <seealso cref="T:BlackGUI.MVC.View.IInputFieldView`2"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.SliderView">
+            <summary>
+            View адаптер по работе с элементом Slider, реализует <seealso cref="T:BlackGUI.MVC.View.ISliderView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.SliderView`1">
+            <summary>
+            View адаптер по работе с элементом Slider, реализует <seealso cref="T:BlackGUI.MVC.View.ISliderView`2"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.TextView">
+            <summary>
+            View адаптер по работе с элементом Text, реализует <seealso cref="T:BlackGUI.MVC.View.ITextView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.TextView`1">
+            <summary>
+            View адаптер по работе с элементом Text, реализует <seealso cref="T:BlackGUI.MVC.View.ITextView"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.TMProDropdownView">
+            <summary>
+            View адаптер по работе с элементом TMP_Dropdown, реализует <seealso cref="T:BlackGUI.MVC.View.IDropdownView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.TMProDropdownView`1">
+            <summary>
+            View адаптер по работе с элементом TMP_Dropdown, реализует <seealso cref="T:BlackGUI.MVC.View.IDropdownView`2"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.TMProInputFieldView">
+            <summary>
+            View адаптер по работе с элементом TMP_InputField, реализует <seealso cref="T:BlackGUI.MVC.View.IInputFieldView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.TMProInputFieldView`1">
+            <summary>
+            View адаптер по работе с элементом TMP_InputField, реализует <seealso cref="T:BlackGUI.MVC.View.IInputFieldView`2"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.TMProTextView">
+            <summary>
+            View адаптер по работе с элементом TextMeshProUGUI, реализует <seealso cref="T:BlackGUI.MVC.View.ITextView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.TMProTextView`1">
+            <summary>
+            View адаптер по работе с элементом TextMeshProUGUI, реализует <seealso cref="T:BlackGUI.MVC.View.ITextView"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.ToggleView">
+            <summary>
+            View адаптер по работе с элементом Toggle, реализует <seealso cref="T:BlackGUI.MVC.View.IToggleView"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.ToggleView`1">
+            <summary>
+            View адаптер по работе с элементом Toggle, реализует <seealso cref="T:BlackGUI.MVC.View.IToggleView`2"/>
+            </summary>
+            <typeparam name="T">Тип рабочего аргумента</typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.IView">
+            <summary>
+            Основной интерфейс всех View
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.IHiddenView">
+            <summary>
+            Дополнительный интерфейс скрываемого элемента
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.IHiddenView`2">
+            <summary>
+            Дополнительный интерфейс скрываемого элемента с рабочим аргументом <seealso cref="T:BlackGUI.ExecutableEventArg"/>
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.ISelectableView">
+            <summary>
+            Дополнительный интерфейс выбираемого элемента
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.ISelectableView`2">
+            <summary>
+            Дополнительный интерфейс выбираемого элемента с рабочим аргументом <seealso cref="T:BlackGUI.ExecutableEventArg"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="Arg"></typeparam>
+        </member>
+        <member name="T:BlackGUI.MVC.View.IShowableView">
+            <summary>
+            Дополнительный интерфес отображаемого элемента
+            </summary>
+        </member>
+        <member name="T:BlackGUI.MVC.View.IShowableView`2">
+            <summary>
+            Дополнительный интерфес отображаемого элемента с рабочим аргументом <seealso cref="T:BlackGUI.ExecutableEventArg"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="Arg"></typeparam>
+        </member>
+    </members>
+</doc>

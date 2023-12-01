@@ -1,0 +1,301 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlackECS</name>
+    </assembly>
+    <members>
+        <member name="T:BlackECS.ComponentExtention">
+            <summary>
+            Класс расширения для работы с компонентом
+            </summary>
+        </member>
+        <member name="M:BlackECS.ComponentExtention.SetValueFromComponent``1(BlackECS.Components.IComponent,``0)">
+            <summary>
+            Установить значение для поля данных компонента, только для полей типа <see cref="T:BlackECS.Components.ComponentDataField`1"/>
+            </summary>
+        </member>
+        <member name="M:BlackECS.ComponentExtention.SetValueFromComponent``2(BlackECS.Components.IComponent,``0,``1)">
+            <summary>
+            Установить значение для поля данных компонента, только для полей типа <see cref="T:BlackECS.Components.ComponentDataField`1"/>
+            </summary>
+        </member>
+        <member name="M:BlackECS.ComponentExtention.SetValueFromComponent``3(BlackECS.Components.IComponent,``0,``1,``2)">
+            <summary>
+            Установить значение для поля данных компонента, только для полей типа <see cref="T:BlackECS.Components.ComponentDataField`1"/>
+            </summary>
+        </member>
+        <member name="M:BlackECS.ComponentExtention.SetValueFromComponent``4(BlackECS.Components.IComponent,``0,``1,``2,``3)">
+            <summary>
+            Установить значение для поля данных компонента, только для полей типа <see cref="T:BlackECS.Components.ComponentDataField`1"/>
+            </summary>
+        </member>
+        <member name="M:BlackECS.ComponentExtention.SetValueFromComponent``5(BlackECS.Components.IComponent,``0,``1,``2,``3,``4)">
+            <summary>
+            Установить значение для поля данных компонента, только для полей типа <see cref="T:BlackECS.Components.ComponentDataField`1"/>
+            </summary>
+        </member>
+        <member name="M:BlackECS.ComponentExtention.SetValueFromComponent``6(BlackECS.Components.IComponent,``0,``1,``2,``3,``4,``5)">
+            <summary>
+            Установить значение для поля данных компонента, только для полей типа <see cref="T:BlackECS.Components.ComponentDataField`1"/>
+            </summary>
+        </member>
+        <member name="M:BlackECS.ComponentExtention.SetComponentValueFromLinkedObject``1(BlackECS.Components.IComponent)">
+            <summary>
+            Установить Unity-компонент для поля данных компонента, только для полей типа <see cref="T:BlackECS.Components.ComponentDataField`1"/>
+            </summary>
+            <typeparam name="T">Тип Unity-компонента <see cref="T:UnityEngine.Component"/></typeparam>
+            <param name="component"></param>
+        </member>
+        <member name="T:BlackECS.EntityExtention">
+            <summary>
+            Класс расширения для работы с сущностью 
+            </summary>
+        </member>
+        <member name="M:BlackECS.EntityExtention.AddComponent``1(BlackECS.Entities.Entity,System.Action{``0})">
+            <summary>
+            Добавить сущности компонент, реализация <see cref="T:BlackECS.Components.IComponent"/>
+            </summary>
+            <param name="setupComponentCallback">Метод настройки компонента</param>
+        </member>
+        <member name="M:BlackECS.EntityExtention.WhereComponent``1(BlackECS.Entities.Entity,System.Action{``0})">
+            <summary>
+            Запросить у сущности компонен, реализация <see cref="T:BlackECS.Components.IComponent"/>
+            </summary>
+            <param name="readComponentCallback">Метод работы с компонентом</param>
+        </member>
+        <member name="M:BlackECS.EntityExtention.WhereEntityGameObject(BlackECS.Entities.Entity)">
+            <summary>
+            Запросить у сущности связанный визуальный объект Unity
+            </summary>
+        </member>
+        <member name="M:BlackECS.EntityExtention.WhereEntityGameComponent``1(BlackECS.Entities.Entity)">
+            <summary>
+            Запросить у сущности связанный игровой компонент Unity
+            </summary>
+            <typeparam name="T">Тип игрового компонента</typeparam>
+            <param name="entity"></param>
+            <returns>Реализация игрового компонента сущности.</returns>
+        </member>
+        <member name="M:BlackECS.EntityExtention.RemoveComponent``1(BlackECS.Entities.Entity)">
+            <summary>
+            Удалить компонент у сущности
+            </summary>
+            <typeparam name="T">Тип комопнента</typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackECS.EntityExtention.DontDestroyOnLoadLevel(BlackECS.Entities.Entity)">
+            <summary>
+            Указать, что сущность неуничтожима в рамках игровой сессии
+            </summary>
+        </member>
+        <member name="M:BlackECS.EntityExtention.Destroy(BlackECS.Entities.Entity,System.Action{UnityEngine.GameObject})">
+            <summary>
+            Уничтожить сущность
+            </summary>
+        </member>
+        <member name="M:BlackECS.EntityExtention.RemoveComponent(BlackECS.Entities.Entity,System.Type)">
+            <summary>
+            Удалить компонент у сущности
+            </summary>
+            <param name="componentType">Тип компонента, реализация <see cref="T:BlackECS.Components.IComponent"/></param>
+        </member>
+        <member name="T:BlackECS.ComponnetFactory.IComponentFactory">
+            <summary>
+            Интерфейс для реализации создания Компонентов в проекте
+            </summary>
+        </member>
+        <member name="M:BlackECS.ComponnetFactory.IComponentFactory.CreateComponent``1">
+            <summary>
+            Метод создания Комонента
+            </summary>
+            <typeparam name="T">Тип компонента</typeparam>
+            <returns>Объект Компонент</returns>
+        </member>
+        <member name="T:BlackECS.SystemExtention">
+            <summary>
+            Класс расширения для работы с системой
+            </summary>
+        </member>
+        <member name="M:BlackECS.SystemExtention.ForgetEntity(BlackECS.Systems.ISystem)">
+            <summary>
+            Закончить работу системы для данной сущности
+            </summary>
+            <remarks>
+            Производится удаление у сущности, связанного с системой компонента
+            </remarks>
+            <param name="system"></param>
+        </member>
+        <member name="M:BlackECS.SystemExtention.ForgetComponent``1(BlackECS.Systems.ISystem)">
+            <summary>
+            Удалить у текущей сущности компонент
+            </summary>
+            /// <remarks>
+            Производится удаление у сущности, указанного типа компонента
+            </remarks>
+            <typeparam name="T">Тип компонента, реализация <see cref="T:BlackECS.Components.IComponent"/></typeparam>
+        </member>
+        <member name="M:BlackECS.SystemExtention.ReadComponent``1(BlackECS.Systems.ISystem,System.Action{``0})">
+            <summary>
+            Прочитать компонент заданного типа у текущей сущности [экспериментально]
+            </summary>
+            <remarks>
+            Производится работа с компонентом указанного типа, если у сущности нет данного компонента, то callback метод не срабатывает
+            </remarks>
+            <typeparam name="T">Тип компонента, реализация <see cref="T:BlackECS.Components.IComponent"/></typeparam>
+            <param name="readComponentCallback">Метод работы с компонентом</param>
+        </member>
+        <member name="M:BlackECS.SystemExtention.TransitToComponent``1(BlackECS.Systems.ISystem,System.Action{``0})">
+            <summary>
+            Закончить работу системы для данной сущности и провести переход на другой компонент
+            </summary>
+            <remarks>
+            Производиться удаления у сущности компонента связанного с системой и добавление указанного компонента, реализация <see cref="T:BlackECS.Components.IComponent"/>
+            </remarks>
+            <param name="setupComponentCallback">Метод настройки компонента</param>
+        </member>
+        <member name="M:BlackECS.SystemExtention.AddToComponent``1(BlackECS.Systems.ISystem,System.Action{``0})">
+            <summary>
+            Произвести добавление компонента для текущей сущности [экспериментально]
+            </summary>
+            <param name="setupComponentCallback">Метод настройки компонента</param>
+        </member>
+        <member name="M:BlackECS.SystemExtention.GetEntityByLinkedUnityComponent``1(BlackECS.Systems.ISystem,``0)">
+            <summary>
+            Получить сущность, по Unity-компоненту [экспериментально]
+            </summary>
+            <typeparam name="T">Тип Unity-компонент</typeparam>
+            <param name="unityComponent">Реализация Unity-компонент</param>
+            <returns><see cref="T:BlackECS.Entities.Entity"/></returns>
+        </member>
+        <member name="M:BlackECS.SystemExtention.RequerComponent``1(BlackECS.Systems.ISystem)">
+            <summary>
+            Запросить компонент
+            </summary>
+            <typeparam name="T">Тип компонента</typeparam>
+            <returns>Реализация абстракции <see cref="T:BlackECS.Components.IComponent"/></returns>
+        </member>
+        <member name="M:BlackECS.SystemExtention.DestroyEntity(BlackECS.Systems.ISystem,System.Action{UnityEngine.GameObject})">
+            <summary>
+            Уничтожить текущую сущность
+            </summary>
+        </member>
+        <member name="T:BlackECS.Components.ComponentDataField`1">
+            <summary>
+            Класс по реализации работы с данными для компонентов
+            </summary>
+            <typeparam name="T">Тип данных</typeparam>
+        </member>
+        <member name="T:BlackECS.Components.IComponentDataField">
+            <summary>
+            Интерфейс работы с данными для компонентов
+            </summary>
+        </member>
+        <member name="P:BlackECS.Components.IComponentDataField.Type">
+            <summary>
+            Тип данных
+            </summary>
+        </member>
+        <member name="M:BlackECS.Components.IComponentDataField.Setup(BlackECS.Data.ComponentData)">
+            <summary>
+            Метод настройки данных
+            </summary>
+            <param name="componentData">Блок данных для компонента</param>
+        </member>
+        <member name="T:BlackECS.Components.IComponent">
+            <summary>
+            Интерфейс маркер любого Компонента
+            </summary>
+        </member>
+        <member name="T:BlackECS.Entities.Entity">
+            <summary>
+            Класс Сущности - хранилище актуальных Компонентов
+            </summary>
+        </member>
+        <member name="T:BlackECS.Systems.BaseSystem`1">
+            <summary>
+            Класс Системы для реализации игровой логики работы со связанным Компонентом
+            </summary>
+            <remarks>
+            Использовать, как единственную реализацию и родителя <see cref="T:BlackECS.Systems.ISystem"/>
+            </remarks>
+            <typeparam name="T">Тип связанного компонента, реализация <see cref="T:BlackECS.Components.IComponent"/></typeparam>
+        </member>
+        <member name="T:BlackECS.Systems.ISystem">
+            <summary>
+            Интерфейс Системы 
+            </summary>
+        </member>
+        <member name="P:BlackECS.Systems.ISystem.WorkType">
+            <summary>
+            Тип рабочего компонента Системы
+            </summary>
+        </member>
+        <member name="P:BlackECS.Systems.ISystem.SystemUpdateOrder">
+            <summary>
+             Порядковый номер в обновление системы
+            </summary>
+            <remarks>
+            Чем меньше значение, тем раньше работает система
+            </remarks>
+        </member>
+        <member name="M:BlackECS.Systems.ISystem.OnUpdate(System.Single)">
+            <summary>
+            Системный рабочий метод
+            </summary>
+            <param name="deltaTime">Время между кадрами <see cref="P:UnityEngine.Time.deltaTime"/></param>
+        </member>
+        <member name="T:BlackECS.World">
+            <summary>
+            Класс по реализации единой точки доступа к основному функционалу BlackECS
+            </summary>
+        </member>
+        <member name="M:BlackECS.World.SetExternalComponentConstructor``1(System.Action{``0})">
+            <summary>
+            Установить внешний сборщик компонентов для всего проекта
+            </summary>
+            <remarks>
+            Рекомендуется определять сборщик компонетов ДО работы с компонентами в прокте.
+            </remarks>
+            <typeparam name="T">Тип внешенго сборщика</typeparam>
+        </member>
+        <member name="M:BlackECS.World.CreateEntity(System.String,UnityEngine.GameObject)">
+            <summary>
+            Создать новую сущность 
+            </summary>
+            <param name="entityTag">Уникальный идентификатор сущности</param>
+            <param name="gameObject">Визуальный объект сущности в среде Unity</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackECS.World.FireOnce(BlackECS.Entities.Entity,System.Single)">
+            <summary>
+            Указать, что сущность отрабатывает один раз, или живет в течение Н-времени, после чего уничтожается.
+            </summary>
+            <param name="entity"></param>
+            <param name="destroyDelay">Время жизни сущности</param>
+        </member>
+        <member name="M:BlackECS.World.GetEntityWithTag(System.String)">
+            <summary>
+            Получить сущность с уникальным идентификатором 
+            </summary>
+            <param name="entityTag">Уникальный идентификатор сущности</param>
+            <returns>Реализация сущности <see cref="T:BlackECS.Entities.Entity"/></returns>
+        </member>
+        <member name="M:BlackECS.World.GetEntityCollectionWithComponent``1">
+            <summary>
+            Получить колллекцию сущностей у которых имеется компонент
+            </summary>
+            <typeparam name="T">Тип компонента</typeparam>
+            <returns>Колллекцию сущностей</returns>
+        </member>
+        <member name="M:BlackECS.World.RegistrationSystem``1(BlackECS.Systems.SystemUpdateType)">
+            <summary>
+            Добавить систему в работу
+            </summary>
+            <remarks>
+            Рекомендуется для класса системы наследоваться от <see cref="T:BlackECS.Systems.BaseSystem`1"/>
+            </remarks>
+            <typeparam name="T">Тип системы, реализация абстракции <see cref="T:BlackECS.Systems.ISystem"/></typeparam>
+        </member>
+    </members>
+</doc>
