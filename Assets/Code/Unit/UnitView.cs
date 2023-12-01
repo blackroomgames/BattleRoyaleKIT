@@ -16,6 +16,11 @@ namespace Code.Unit
         public NavMeshAgent Agent { get; private set; }
         public Animator Animator => _animator;
 
+        private void Reset()
+        {
+            _animator = GetComponentInChildren<Animator>();
+        }
+
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();

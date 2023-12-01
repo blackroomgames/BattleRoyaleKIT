@@ -4,7 +4,7 @@ namespace Code.Unit.Strategy
 {
     public interface IStrategy : IDisposable
     {
-        void Execute();
-        void Update();
+        void Execute(UnitPresentor owner);
+        void Update(UnitPresentor owner);
     }
 }
