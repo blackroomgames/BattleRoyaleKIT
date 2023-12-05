@@ -21,6 +21,10 @@ namespace Code.Installers
                 .Bind<UnitPool>()
                 .WithParameters(_unitViewData)
                 .AsSingle();
+
+            LasyContainer
+                .Bind<MapItemPool>()
+                .AsSingle();
         }
     }
 }
