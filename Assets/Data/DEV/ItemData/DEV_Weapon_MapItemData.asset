@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bc2fa1581d7e1448c21668fee11d89, type: 3}
+  m_Name: DEV_Weapon_MapItemData
+  m_EditorClassIdentifier: 
+  _setting:
+  - itemPrefab: {fileID: 7906131974787933670, guid: 1b278ec38d39ec14daabc0943414b1c9, type: 3}
+    createChance: 5
+  - itemPrefab: {fileID: 2000592495026389571, guid: 6e58c7d514396f5488e16c765150c065, type: 3}
+    createChance: 15
+  - itemPrefab: {fileID: 3072866558487036593, guid: baa9befa11c71b8489229800a1dae3d5, type: 3}
+    createChance: 35
